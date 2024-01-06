@@ -1,0 +1,13 @@
+main {
+  min-height: 80vh;
+}
+
+.Navbar {
+  background: linear-gradient(45deg, rgb(160, 159, 159), rgb(7, 224, 7));
+  height: 3.5rem;
+}
+
+#ft-main {
+  background: black;
+  width: 100vw;
+}

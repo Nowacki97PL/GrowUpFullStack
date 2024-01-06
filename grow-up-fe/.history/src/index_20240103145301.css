@@ -1,0 +1,28 @@
+main {
+  min-height: 80vh;
+}
+
+#Navbar {
+  background: linear-gradient(45deg, rgb(160, 159, 159), rgb(7, 224, 7));
+  height: 4.5rem;
+}
+
+.img-logo img {
+  height: 3.5rem;
+}
+
+#card-title {
+  text-decoration: none;
+}
+
+h3 {
+  padding: 1rem 0;
+}
+
+.rating span{
+  margin: 0.1rem;
+}
+
+#card-border-color {
+  border;
+}

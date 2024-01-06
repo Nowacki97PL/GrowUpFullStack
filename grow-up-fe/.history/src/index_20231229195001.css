@@ -1,0 +1,16 @@
+main {
+  min-height: 80vh;
+}
+
+#Navbar {
+  background: linear-gradient(45deg, rgb(160, 159, 159), rgb(7, 224, 7));
+  height: 3.5rem;
+  width: 100%;
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
