@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams, useNavigate, Navigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
 	Row,
 	Col,
@@ -17,7 +17,6 @@ import { listProductDetail } from "../actions/productActions";
 
 function ProductScreen() {
 	const { id } = useParams();
-	const navigate = useNavigate();
 	const [qty, setQty] = useState(1);
 	const dispatch = useDispatch();
 	const productDetails = useSelector((state) => state.productDetails);
@@ -26,10 +25,6 @@ function ProductScreen() {
 	useEffect(() => {
 		dispatch(listProductDetail(id));
 	}, [dispatch, id]);
-
-	const addToCartHandler = () =>{
-		navigate(`/cart/${id}?qty=${qty}`)
-	}
 
 	return (
 		<div>
@@ -90,32 +85,11 @@ function ProductScreen() {
 									</Row>
 								</ListGroup.Item>
 
-								{product.count_in_stock > 0 && (
-									<ListGroup.Item>
-									<Row>
-									  <Col>Ilość</Col>
-									  <Col xs="auto" className="my-1">
-										<Form.Control
-										className="form-select"
-										  as="select"
-										  value={qty}
-										  onChange={(e) => setQty(e.target.value)}
-										>
-										  {[...Array(product.count_in_stock).keys()].map((x) => (
-											<option key={x + 1} value={x + 1}>
-											  {x + 1}
-											</option>
-										  ))}
-										</Form.Control>
-									  </Col>
-									</Row>
-								  </ListGroup.Item>
-								)}
+								{product.count_in_stock > 0 }
 
 								<ListGroup.Item>
 									<Row>
 										<Button
-											onClick={addToCartHandler}
 											className="btn-block"
 											disabled={product.count_in_stock == 0}
 											type="button"

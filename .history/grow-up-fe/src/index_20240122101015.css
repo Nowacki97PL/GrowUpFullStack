@@ -1,5 +1,5 @@
 main {
-  min-height: 81.1vh;
+  min-height: 80vh;
   width: 100%;
 }
 
@@ -36,7 +36,8 @@ h3 {
 }
 
 .Footer-main {
-  background:  rgb(160, 159, 159);
+  background: gray;
   width: 100%;
-  color: black;
+  margin: 0;
+  pa
 }

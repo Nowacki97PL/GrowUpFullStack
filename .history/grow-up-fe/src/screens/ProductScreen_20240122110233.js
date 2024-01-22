@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams, useNavigate, Navigate } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import {
 	Row,
 	Col,
@@ -15,20 +15,20 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { listProductDetail } from "../actions/productActions";
 
-function ProductScreen() {
+function ProductScreen({history}) {
 	const { id } = useParams();
-	const navigate = useNavigate();
 	const [qty, setQty] = useState(1);
 	const dispatch = useDispatch();
 	const productDetails = useSelector((state) => state.productDetails);
 	const { loading, error, product } = productDetails;
+
 
 	useEffect(() => {
 		dispatch(listProductDetail(id));
 	}, [dispatch, id]);
 
 	const addToCartHandler = () =>{
-		navigate(`/cart/${id}?qty=${qty}`)
+		history.push(`/cart/${id}?qty=${qty}`)
 	}
 
 	return (

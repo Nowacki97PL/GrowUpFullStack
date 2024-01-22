@@ -17,7 +17,7 @@ import { listProductDetail } from "../actions/productActions";
 
 function ProductScreen() {
 	const { id } = useParams();
-	const navigate = useNavigate();
+	const
 	const [qty, setQty] = useState(1);
 	const dispatch = useDispatch();
 	const productDetails = useSelector((state) => state.productDetails);
@@ -28,7 +28,7 @@ function ProductScreen() {
 	}, [dispatch, id]);
 
 	const addToCartHandler = () =>{
-		navigate(`/cart/${id}?qty=${qty}`)
+		Navigate(`/cart/${id}?qty=${qty}`)
 	}
 
 	return (
