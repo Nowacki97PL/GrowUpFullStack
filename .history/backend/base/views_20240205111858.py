@@ -14,9 +14,6 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         data = super().validate(attrs)
         
         serializer = UserSerializerWithToken(self.user).data
-        
-        for k, v in serializer.items():
-            data[k] = v
 
         return data
     

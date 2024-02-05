@@ -7,18 +7,16 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 from .models import Product
-from .serializers import ProductSerializer, UserSerializer, UserSerializerWithToken
+from .serializers import ProductSerializer
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-    def validate(self, attrs):
-        data = super().validate(attrs)
-        
-        serializer = UserSerializerWithToken(self.user).data
-        
-        for k, v in serializer.items():
-            data[k] = v
-
-        return data
+   def validate(self, attrs):
+       data = super().validate(attrs)
+       
+       refresh = self.get_token(self.user)
+       
+       data['refresh'] = str(refresh)
+       data[]
     
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
@@ -31,13 +29,7 @@ def getRoutes(request):
 @api_view(['GET'])
 def getProducts(request):
     products = Product.objects.all()
-    serializer = UserSerializer(products, many=True)
-    return Response(serializer.data)
-
-@api_view(['GET'])
-def getUserProfile(request):
-    user = request.user
-    serializer = UserSerializer(user, many=False)
+    serializer = ProductSerializer(products, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
