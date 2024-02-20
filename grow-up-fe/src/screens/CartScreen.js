@@ -14,7 +14,7 @@ import Message from "../components/Message";
 import { addToCart, removeFromCart } from "../actions/cartActions";
 
 function CartScreen({ Location }) {
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 	const { id } = useParams();
 	const qty = location.search ? Number(location.search.split("=")[1]) : 1;
 
@@ -30,7 +30,7 @@ function CartScreen({ Location }) {
 	}, [dispatch, id, qty]);
 
 	const removeFromCartHandler = (id) => {
-		dispatch(removeFromCart(id))
+		dispatch(removeFromCart(id));
 	};
 
 	const checkoutHandler = () => {
@@ -108,10 +108,10 @@ function CartScreen({ Location }) {
 								Ilość przedmiotów (
 								{cartItems.reduce((acc, item) => acc + item.qty, 0)})
 							</h2>
-							$
 							{cartItems
 								.reduce((acc, item) => acc + item.qty * item.price, 0)
 								.toFixed(2)}
+							&nbsp;PLN
 						</ListGroup.Item>
 					</ListGroup>
 					<ListGroup.Item>
@@ -119,7 +119,7 @@ function CartScreen({ Location }) {
 							type="button"
 							className="btn-block w-100"
 							disabled={cartItems.length === 0}
-              onClick={checkoutHandler}
+							onClick={checkoutHandler}
 						>
 							Przejdź do podsumowania
 						</Button>

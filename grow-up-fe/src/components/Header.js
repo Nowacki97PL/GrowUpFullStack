@@ -1,15 +1,24 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Container } from "react-bootstrap";
+import { Container, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { logout } from "../actions/userActions";
 
 function Header() {
+	const userLogin = useSelector((state) => state.userLogin);
+	const { userInfo } = userLogin;
+	const dispatch = useDispatch();
+
+	const logoutHandler = () => {
+		dispatch(logout());
+	};
+
 	return (
 		<header>
 			<Navbar expand="md" id="Navbar" collapseOnSelect>
 				<Container className="nav-main">
-
 					<LinkContainer to="/">
 						<Navbar.Brand className="img-logo">
 							<img src="logo.png" alt="logo"></img>
@@ -19,7 +28,6 @@ function Header() {
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="ms-xxl-auto">
-
 							<LinkContainer to="/shop">
 								<Nav.Link>
 									<i className="fa-solid fa-shop"></i>
@@ -47,19 +55,26 @@ function Header() {
 								</Nav.Link>
 							</LinkContainer>
 
-							<LinkContainer to="/profile">
-								<Nav.Link>
-									<i className="fas fa-user"></i>Profil
-								</Nav.Link>
-							</LinkContainer>
-
-							<LinkContainer to="/login">
-								<Nav.Link>
-									<i className="fa-solid fa-right-to-bracket"></i>
-									Zaloguj
-								</Nav.Link>
-							</LinkContainer>
-							
+							{userInfo ? (
+								<NavDropdown title={userInfo.name} id="username">
+									<LinkContainer to="/profile">
+										<NavDropdown.Item>
+											<i className="fas fa-user"></i>Profil
+										</NavDropdown.Item>
+									</LinkContainer>
+									<NavDropdown.Item onClick={logoutHandler}>
+										<i className="fa-solid fa-right-from-bracket"></i>
+										Wyloguj
+									</NavDropdown.Item>
+								</NavDropdown>
+							) : (
+								<LinkContainer to="/login">
+									<Nav.Link>
+										<i className="fa-solid fa-right-to-bracket"></i>
+										Zaloguj
+									</Nav.Link>
+								</LinkContainer>
+							)}
 						</Nav>
 					</Navbar.Collapse>
 				</Container>
