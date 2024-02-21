@@ -10,16 +10,19 @@ import { login } from "../actions/userActions";
 function LoginScreen() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [loading, setLoading] = useState(false);
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-  	const location = useLocation();
+	const location = useLocation();
 
-	const redirect = location.search ? new URLSearchParams(location.search).get("redirect") : "/";
+	const redirect = location.search
+		? new URLSearchParams(location.search).get("redirect")
+		: "/";
 
 	const userLogin = useSelector((state) => state.userLogin);
 
-	const {error, loading, userInfo } = userLogin || {};
+	const { error, userInfo } = userLogin || {};
 
 	useEffect(() => {
 		if (userInfo) {
@@ -29,7 +32,13 @@ function LoginScreen() {
 
 	const sumbitHanlder = (e) => {
 		e.preventDefault();
-		dispatch(login(email, password));
+		setLoading(true); 
+
+		try {
+			dispatch(login(email, password));
+		} catch (error) {
+			setLoading(false);
+		}
 	};
 
 	return (
