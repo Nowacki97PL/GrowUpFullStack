@@ -40,7 +40,7 @@ function CartScreen({ Location }) {
 	return (
 		<Row>
 			<Col md={8}>
-				<h1>Koszyk</h1>
+				<h1><i className="fas fa-shopping-cart"></i> Koszyk</h1>
 				{cartItems.length === 0 ? (
 					<Message variant="info">
 						Twój koszyk jest pusty <Link to="/shop">Powrót</Link>
