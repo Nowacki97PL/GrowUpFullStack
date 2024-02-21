@@ -13,7 +13,7 @@ function LoginScreen() {
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-  const location = useLocation();
+  	const location = useLocation();
 
 	const redirect = location.search ? new URLSearchParams(location.search).get("redirect") : "/";
 
