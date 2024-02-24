@@ -1,0 +1,66 @@
+main {
+  min-height: 81.1vh;
+  width: 100%;
+}
+
+
+.nav-main {
+  width: 100%;
+  margin: 0;
+}
+
+#Navbar {
+  background: linear-gradient(45deg, rgb(160, 159, 159) 10%, rgb(7, 224, 7));
+  box-shadow: 3px 5px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-toggler {
+  margin-right: 1rem;
+}
+
+.img-logo img {
+  display: flex;
+  height: 3.95rem;
+  margin-left: 1rem;
+}
+
+#card-title {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+}
+
+h2 {
+  font-size: 1.4rem;
+  padding: 0.5rem 0;
+}
+
+h3 {
+  padding: 1rem 0;
+}
+
+.rating span {
+  margin: 0.1rem;
+}
+
+#card-border-color {
+  border-color: rgb(7, 224, 7);
+}
+
+#placeOrderButton {
+  width: 100%;
+}
+
+.Footer-main {
+  background:  rgb(160, 159, 159);
+  width: 100%;
+  color: black;
+}
+
+List
