@@ -78,6 +78,4 @@ def get_order_by_id(request, pk):
                 status=status.HTTP_400_BAD_REQUEST,
             )
     except:
-        return Response(
-            {"detail": "Zamówienie nieistnieje."}, status=status.HTTP_400_BAD_REQUEST
-        )
+        return Response({'detail': 'Zamówienie nieistnieje.'}, status=status.HTTP_400_BAD_REQUEST)

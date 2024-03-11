@@ -67,17 +67,9 @@ def get_order_by_id(request, pk):
 
     user = request.user
 
-    try:
-        order = Order.objects.get(id=pk)
-        if user.is_staff or order.user == user:
-            serializer = OrderSerializer(order, many=False)
-            return Response(serializer.data)
-        else:
-            Response(
-                {"detail": "Nieautoryzowany użytkownik do zobaczenia tego zamówienia"},
-                status=status.HTTP_400_BAD_REQUEST,
-            )
-    except:
-        return Response(
-            {"detail": "Zamówienie nieistnieje."}, status=status.HTTP_400_BAD_REQUEST
-        )
+    order = Order.objects.get(id=pk)
+    if user.is_staff or order.user == user:
+        serializer = OrderSerializer(order, many=False)
+        return Response(serializer.data)
+    else:
+        Response({'detail': 'Nieautoryzowany użyt'})

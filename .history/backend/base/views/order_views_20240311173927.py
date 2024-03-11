@@ -75,9 +75,7 @@ def get_order_by_id(request, pk):
         else:
             Response(
                 {"detail": "Nieautoryzowany użytkownik do zobaczenia tego zamówienia"},
-                status=status.HTTP_400_BAD_REQUEST,
+                status=HTTP_400_BAD_REQUEST,
             )
     except:
-        return Response(
-            {"detail": "Zamówienie nieistnieje."}, status=status.HTTP_400_BAD_REQUEST
-        )
+        return Response({'detail': 'Zamówienie nieistnieje.'}, )
