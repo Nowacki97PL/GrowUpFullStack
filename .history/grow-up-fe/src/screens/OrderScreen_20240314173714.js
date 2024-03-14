@@ -122,14 +122,14 @@ function OrderScreen() {
 							<ListGroup.Item>
 								<Row>
 									<Col>Podatek:</Col>
-									<Col>{order.tax_price}{" "}PLN</Col>
+									<Col>{order.taxPrice}{" "}PLN</Col>
 								</Row>
 							</ListGroup.Item>
 
 							<ListGroup.Item>
 								<Row>
 									<Col>Cena:</Col>
-									<Col>{order.total_price}{" "}PLN</Col>
+									<Col>{order.totalPrice}{" "}PLN</Col>
 								</Row>
 							</ListGroup.Item>
 						</ListGroup>

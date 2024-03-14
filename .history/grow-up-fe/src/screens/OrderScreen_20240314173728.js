@@ -129,7 +129,7 @@ function OrderScreen() {
 							<ListGroup.Item>
 								<Row>
 									<Col>Cena:</Col>
-									<Col>{order.total_price}{" "}PLN</Col>
+									<Col>{order.totalPrice}{" "}PLN</Col>
 								</Row>
 							</ListGroup.Item>
 						</ListGroup>
