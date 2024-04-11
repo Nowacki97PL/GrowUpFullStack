@@ -30,7 +30,7 @@ function OrderScreen() {
 		const script = document.createElement("script");
 		script.type = "text/javascript";
 		script.src =
-			"https://www.paypal.com/sdk/js?client-id=AZr6kHF-SkTtYsKzGOem_--rbTQRIgxy_NM-1NZrdeiZPQkYVpzEOsXB_opIb9ptUpXwP5Lt9f3i7oYn&currency=PLN";
+			"https://www.paypal.com/sdk/js?client-id=AZr6kHF-SkTtYsKzGOem_--rbTQRIgxy_NM-1NZrdeiZPQkYVpzEOsXB_opIb9ptUpXwP5Lt9f3i7oYn";
 		script.async = true;
 		script.onload = () => {
 			setSdkReady(true);
@@ -182,12 +182,19 @@ function OrderScreen() {
 									{!sdkReady ? (
 										<Loader />
 									) : (
+
 										<PayPalButton
-											currency_code="PLN"
-											amount={order.total_price}
-											onSuccess={successPaymentHandler}
-										/>
-									)}
+    	purchase_units={[
+        {
+            amount: {
+                currency_code: "PLN",
+                value: order.total_price
+            }
+        }
+    ]}
+    amount={order.total_price}
+    onSuccess={successPaymentHandler}
+/>
 								</ListGroup.Item>
 							)}
 						</ListGroup>

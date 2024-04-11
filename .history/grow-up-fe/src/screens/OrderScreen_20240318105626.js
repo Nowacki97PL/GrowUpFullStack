@@ -1,24 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { PayPalButton } from "react-paypal-button-v2";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { getOrderDetails, payOrder } from "../actions/orderActions";
-import { ORDER_PAY_RESET } from "../constants/orderConstants";
+import { getOrderDetails } from "../actions/orderActions";
 
 function OrderScreen() {
 	const { orderId } = useParams();
 	const dispatch = useDispatch();
 
-	const [sdkReady, setSdkReady] = useState(false);
+	const [sdkReady, setSdkReady]
 
 	const orderDetails = useSelector((state) => state.orderDetails);
 	const { order, error, loading } = orderDetails;
-
-	const orderPay = useSelector((state) => state.orderPay);
-	const { loading: loadingPay, success: successPay } = orderPay;
 
 	if (!loading & !error) {
 		order.itemsPrice = order.orderItems
@@ -29,31 +24,19 @@ function OrderScreen() {
 	const addPayPalScript = () => {
 		const script = document.createElement("script");
 		script.type = "text/javascript";
-		script.src =
-			"https://www.paypal.com/sdk/js?client-id=AZr6kHF-SkTtYsKzGOem_--rbTQRIgxy_NM-1NZrdeiZPQkYVpzEOsXB_opIb9ptUpXwP5Lt9f3i7oYn&currency=PLN";
-		script.async = true;
+		script.src = "https://www.paypal.com/sdk/js?client-id=AZr6kHF-SkTtYsKzGOem_--rbTQRIgxy_NM-1NZrdeiZPQkYVpzEOsXB_opIb9ptUpXwP5Lt9f3i7oYn"
+		script.async = true
 		script.onload = () => {
-			setSdkReady(true);
-		};
-		document.body.appendChild(script);
+			setSdkReady(true)
+		}
+
 	};
 
 	useEffect(() => {
-		if (!order || successPay || order.id !== Number(orderId)) {
-			dispatch({ type: ORDER_PAY_RESET });
+		if (!order || order.id !== Number(orderId)) {
 			dispatch(getOrderDetails(orderId));
-		} else if (!order.is_paid) {
-			if (!window.paypal) {
-				addPayPalScript();
-			} else {
-				setSdkReady(true);
-			}
 		}
-	}, [dispatch, order, orderId, successPay]);
-
-	const successPaymentHandler = (paymentResult) => {
-		dispatch(payOrder(orderId, paymentResult));
-	};
+	}, [dispatch, order, orderId]);
 
 	return loading ? (
 		<Loader />
@@ -128,8 +111,8 @@ function OrderScreen() {
 												</Col>
 
 												<Col md={4}>
-													{item.qty} X {item.price} PLN =
-													{(item.qty * item.price).toFixed(2)} PLN
+													{item.qty} X ${item.price} = $
+													{(item.qty * item.price).toFixed(2)}
 												</Col>
 											</Row>
 										</ListGroup.Item>
@@ -174,22 +157,6 @@ function OrderScreen() {
 									<Col>{order.total_price} PLN</Col>
 								</Row>
 							</ListGroup.Item>
-
-							{!order.isPaid && (
-								<ListGroup.Item>
-									{loadingPay && <Loader />}
-
-									{!sdkReady ? (
-										<Loader />
-									) : (
-										<PayPalButton
-											currency_code="PLN"
-											amount={order.total_price}
-											onSuccess={successPaymentHandler}
-										/>
-									)}
-								</ListGroup.Item>
-							)}
 						</ListGroup>
 					</Card>
 				</Col>

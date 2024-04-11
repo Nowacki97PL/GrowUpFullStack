@@ -183,7 +183,6 @@ function OrderScreen() {
 										<Loader />
 									) : (
 										<PayPalButton
-											currency_code="PLN"
 											amount={order.total_price}
 											onSuccess={successPaymentHandler}
 										/>
