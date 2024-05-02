@@ -74,8 +74,7 @@ def update_user_profile(request):
 
 @api_view(["GET"])
 @permission_classes([IsAdminUser])
-def get_users(request):
+def get_Users(request):
     users = User.objects.all()
     serializer = UserSerializer(users, many=True)
     return Response(serializer.data)
-

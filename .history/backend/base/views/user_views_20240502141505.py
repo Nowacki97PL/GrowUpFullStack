@@ -54,7 +54,7 @@ def get_user_profile(request):
 
 @api_view(["PUT"])
 @permission_classes([IsAuthenticated])
-def update_user_profile(request):
+def update_userProfile(request):
     user = request.user
     serializer = UserSerializerWithToken(user, many=False)
 
@@ -74,8 +74,7 @@ def update_user_profile(request):
 
 @api_view(["GET"])
 @permission_classes([IsAdminUser])
-def get_users(request):
+def getUsers(request):
     users = User.objects.all()
     serializer = UserSerializer(users, many=True)
     return Response(serializer.data)
-
