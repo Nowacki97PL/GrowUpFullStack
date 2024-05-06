@@ -1,3 +1,0 @@
-const productListReducers (state ={}) =>{
-
-}
