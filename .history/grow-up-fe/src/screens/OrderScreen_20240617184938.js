@@ -84,7 +84,7 @@ function OrderScreen() {
 	}, [dispatch, order, id, successPay, successDeliver]);
 
 	const successPaymentHandler = (paymentResult) => {
-		dispatch(payOrder(id, paymentResult));
+		dispatch(payOrder(orderId, paymentResult));
 	};
 
 	const deliverHandler = () => {
@@ -235,7 +235,7 @@ function OrderScreen() {
 									<ListGroupItem>
 										<Button
 											type="button"
-											className="btn btn-block offset-xl-2"
+											className="btn btn-block"
 											onClick={deliverHandler}
 										>
 											Oznacz jako dostarczone

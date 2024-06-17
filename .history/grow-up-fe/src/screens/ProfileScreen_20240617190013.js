@@ -65,7 +65,7 @@ function ProfileScreen() {
 	};
 
 	const sortedOrders = orders ? orders.sort((a, b) => a.id - b.id) : [];
-
+	
 	return (
 		<Row>
 			<Col md={3}>
@@ -140,7 +140,7 @@ function ProfileScreen() {
 							</tr>
 						</thead>
 						<tbody>
-							{sortedOrders.map((order) => (
+							{orders.map((order) => (
 								<tr key={order.id}>
 									<td>{order.id}</td>
 									<td>{order.created_at.substring(0, 10)}</td>

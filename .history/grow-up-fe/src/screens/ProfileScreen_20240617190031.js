@@ -140,7 +140,7 @@ function ProfileScreen() {
 							</tr>
 						</thead>
 						<tbody>
-							{sortedOrders.map((order) => (
+							{sortedOrdersorders.map((order) => (
 								<tr key={order.id}>
 									<td>{order.id}</td>
 									<td>{order.created_at.substring(0, 10)}</td>

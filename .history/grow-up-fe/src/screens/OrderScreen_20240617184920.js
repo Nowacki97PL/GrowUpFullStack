@@ -81,10 +81,10 @@ function OrderScreen() {
 				setSdkReady(true);
 			}
 		}
-	}, [dispatch, order, id, successPay, successDeliver]);
+	}, [dispatch, order, orderId, successPay, successDeliver]);
 
 	const successPaymentHandler = (paymentResult) => {
-		dispatch(payOrder(id, paymentResult));
+		dispatch(payOrder(orderId, paymentResult));
 	};
 
 	const deliverHandler = () => {
@@ -97,7 +97,7 @@ function OrderScreen() {
 		<Message variant="danger">{error}</Message>
 	) : (
 		<div>
-			<h1>Zamówienie: {id}</h1>
+			<h1>Zamówienie: {orderId}</h1>
 			<Row>
 				<Col md={8}>
 					<ListGroup variant="flush">
@@ -235,7 +235,7 @@ function OrderScreen() {
 									<ListGroupItem>
 										<Button
 											type="button"
-											className="btn btn-block offset-xl-2"
+											className="btn btn-block"
 											onClick={deliverHandler}
 										>
 											Oznacz jako dostarczone

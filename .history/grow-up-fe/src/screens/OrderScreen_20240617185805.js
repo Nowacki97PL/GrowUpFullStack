@@ -235,7 +235,7 @@ function OrderScreen() {
 									<ListGroupItem>
 										<Button
 											type="button"
-											className="btn btn-block offset-xl-2"
+											className="btn btn-block offset-xl-3"
 											onClick={deliverHandler}
 										>
 											Oznacz jako dostarczone
