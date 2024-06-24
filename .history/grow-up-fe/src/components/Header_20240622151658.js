@@ -27,7 +27,6 @@ function Header() {
 
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
-					<SearchBox/>
 					<Nav className="ms-md-auto me-xl-5">
 						<LinkContainer to="/shop">
 							<Nav.Link>

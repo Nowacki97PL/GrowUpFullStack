@@ -13,7 +13,7 @@ function ShopScreen() {
 	const productList = useSelector((state) => state.productList);
 	const { error, loading, products } = productList;
 
-	let keyword = location.search ? location.search.split("=")[1] : "";
+	let keyword = location.search ? location.search.split('=')[1] : '';
 
 	useEffect(() => {
 		dispatch(listProducts(keyword));

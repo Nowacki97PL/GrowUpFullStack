@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Product from "../components/Product";
@@ -13,7 +13,7 @@ function ShopScreen() {
 	const productList = useSelector((state) => state.productList);
 	const { error, loading, products } = productList;
 
-	let keyword = location.search ? location.search.split("=")[1] : "";
+	let keyword = location.search;
 
 	useEffect(() => {
 		dispatch(listProducts(keyword));

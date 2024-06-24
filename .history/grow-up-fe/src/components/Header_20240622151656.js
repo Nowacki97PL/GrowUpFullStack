@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { Container, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
-import SearchBox from './SearchBox'
+import moduleName from './SearchBox'
 
 function Header() {
 	const userLogin = useSelector((state) => state.userLogin);
@@ -27,7 +27,6 @@ function Header() {
 
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
-					<SearchBox/>
 					<Nav className="ms-md-auto me-xl-5">
 						<LinkContainer to="/shop">
 							<Nav.Link>

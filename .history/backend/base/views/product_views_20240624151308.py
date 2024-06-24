@@ -12,7 +12,7 @@ from base.serializers import ProductSerializer
 def get_products(request):
     query = request.query_params.get("keyword", "")
 
-    
+    print("query:", query)
 
     if query:
         products = Product.objects.filter(name__icontains=query)

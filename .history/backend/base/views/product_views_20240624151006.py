@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
-from django.core.paginator import Paginator, EmptyPage, Page, PageNotAnInteger
+from django
 
 from base.models import Product, Review
 from base.serializers import ProductSerializer
@@ -12,7 +12,7 @@ from base.serializers import ProductSerializer
 def get_products(request):
     query = request.query_params.get("keyword", "")
 
-    
+    print("query:", query)
 
     if query:
         products = Product.objects.filter(name__icontains=query)
