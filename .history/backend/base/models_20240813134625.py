@@ -90,7 +90,5 @@ class GymEntry(models.Model):
             return f"{self.user.username} - {self.entries} treningów"
         
         
-class Trainer(models.Model):
-    name = models.CharField(max_length=200)
-    image = models.CharField(max_length=200)
-    description = models.TextField(null=True, blank=True)
+class Trainer(models.Model)
+    name = models.CharField(max)
