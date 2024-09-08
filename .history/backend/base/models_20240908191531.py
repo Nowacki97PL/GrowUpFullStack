@@ -131,6 +131,7 @@ class TrainingSession(models.Model):
     )
 
     def clean(self):
+        # Validation of session
         if not (6 <= self.date.hour <= 23):
             raise ValidationError(
                 "Trening może się rozpocząć tylko w godzinach 6:00 - 23:00."

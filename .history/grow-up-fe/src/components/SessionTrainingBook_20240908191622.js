@@ -49,10 +49,10 @@ const BookTrainingSessionForm = () => {
                 <input type="datetime-local" value={date} onChange={(e) => setDate(e.target.value)} required />
             </div>
             <Button className='mt-3' type="submit" disabled={loading} variant="primary">
-                {loading ? 'Booking...' : 'Rezerwuj'}
+                {loading ? 'Booking...' : 'Book Session'}
             </Button>
             {error && <div>Error: {error}</div>}
-            {success && <div>Trening zarezerwowany</div>}
+            {success && <div>Trening zarezerwow</div>}
         </form>
     );
 };
